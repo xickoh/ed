@@ -24,7 +24,7 @@ public class LinkedStack<T> implements StackADT<T> {
     /**
      * array of generic elements to represent the stack
      */
-    private LinearNode stack;
+    private LinearNode<T> top;
     private int size;
 
     @Override
@@ -32,18 +32,18 @@ public class LinkedStack<T> implements StackADT<T> {
 
         LinearNode newNode = new LinearNode(element);
 
-        newNode.setNext(this.stack);
+        newNode.setNext(this.top);
 
-        this.stack = newNode;
+        this.top = newNode;
         size++;
     }
 
     @Override
     public T pop() throws EmptyCollectionException {
 
-        T element = (T) this.stack.getElement();
+        T element = (T) this.top.getElement();
 
-        this.stack = this.stack.getNext();
+        this.top = this.top.getNext();
 
         size--;
 
@@ -52,12 +52,12 @@ public class LinkedStack<T> implements StackADT<T> {
 
     @Override
     public T peek() throws EmptyCollectionException {
-        return (T) this.stack.getElement();
+        return this.top.getElement();
     }
 
     @Override
     public boolean isEmpty() {
-        return (this.stack.getElement().equals(null)) ? true : false;
+        return (this.top.getElement().equals(null)) ? true : false;
     }
 
     @Override
