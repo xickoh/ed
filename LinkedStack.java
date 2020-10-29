@@ -41,7 +41,7 @@ public class LinkedStack<T> implements StackADT<T> {
     @Override
     public T pop() throws EmptyCollectionException {
 
-        T element = (T) this.top.getElement();
+        T element = this.top.getElement();
 
         this.top = this.top.getNext();
 
